@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>MusLibApp</title>
+</head>
+<body>
+	<h1>Artists & Songs</h1>
+	<div th:each="artist : ${artists}">
+		<h2>Artist</h2>
+		<table>
+			<tr>
+				<td>Nick:</td>
+				<td th:text="${artist.nick}">nick</td>
+			</tr>
+			<tr>
+				<td>First Name:</td>
+				<td th:text="${artist.firstName}">fname</td>
+			</tr>
+			<tr>
+				<td>Last Name:</td>
+				<td th:text="${artist.lastName}">lname</td>
+			</tr>
+		</table>
+		<h3>Songs</h3>
+		<table>
+			<tr>
+				<th>Title</th>
+				<th>Genre</th>
+				<th>Year</th>
+				<th>Record Label</th>
+			</tr>
+			<tr th:each="song : ${artist.getSongs()}">
+				<td th:text="${song.title}">title</td>
+				<td th:text="${song.genre}">genre</td>
+				<td th:text="${song.year}">year</td>
+				<td th:text="${song.recordLabel}">label</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
